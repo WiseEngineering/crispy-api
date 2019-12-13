@@ -4,12 +4,12 @@ import { Context } from './utils'
 
 const resolvers = {
   Query: {
-    getAll(parent, args, context: Context) {
+    getAll(parent, args, context: Context): object {
       return context.prisma.users()
     }
   },
   Mutation: {
-    createUser(parent, { name }, context: Context) {
+    createUser(parent, { name }, context: Context): object {
       return context.prisma.createUser({ name })
     },
   },
