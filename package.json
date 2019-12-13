@@ -1,0 +1,22 @@
+{
+  "name": "crispy-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:WiseEngineering/crispy-api.git",
+  "author": "Vasyl Zdyrko",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prisma-build": "prisma generate && prisma deploy",
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "graphql-yoga": "1.18.3",
+    "prisma-client-lib": "^1.20.0"
+  },
+  "devDependencies": {
+    "prisma": "1.34.10",
+    "ts-node": "7.0.1",
+    "typescript": "3.2.2"
+  }
+}

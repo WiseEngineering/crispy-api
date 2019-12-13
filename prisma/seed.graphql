@@ -1,0 +1,25 @@
+mutation {
+  user1: createUser(
+    data: {
+      name: "Bazilius1"
+    }
+  ) {
+    id
+  }
+
+  user2: createUser(
+    data: {
+      name: "Bazilius2"
+    }
+  ) {
+    id
+  }
+
+  user3: createUser(
+    data: {
+      name: "Bazilius3"
+    }
+  ) {
+    id
+  }
+}
