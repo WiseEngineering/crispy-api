@@ -1,23 +1,14 @@
-import { GraphQLServer } from 'graphql-yoga'
-import { prisma } from './generated/prisma-client'
-import { Context } from './utils'
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+import { importSchema } from 'graphql-import'
+import { resolvers } from "./graphql";
 
-const resolvers = {
-  Query: {
-    getAll(parent, args, context: Context): object {
-      return context.prisma.users()
-    }
-  },
-  Mutation: {
-    createUser(parent, { name }, context: Context): object {
-      return context.prisma.createUser({ name })
-    },
-  },
-};
+const typeDefs = importSchema('src/graphql/schema.graphql');
+const server = new ApolloServer({ typeDefs, resolvers });
+const app = express();
 
-const server = new GraphQLServer({
-  typeDefs: './src/schema.graphql',
-  resolvers,
-  context: { prisma },
-});
-server.start(() => console.log('Server is running on http://localhost:4000'));
+server.applyMiddleware({ app });
+app.use('/', express.static('public'));
+
+const port = process.env.SERVER_PORT || 4000;
+app.listen(port, () => console.log(`App listening on port ${port}!`));

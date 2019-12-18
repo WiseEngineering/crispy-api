@@ -1,7 +1,7 @@
 # crispy-api
 Typescript GraphQL API for `crispy-web`
 
-API based on [`Prisma IO`](https://www.prisma.io) client. Client server describe in `docker-compose` 
+API based on [`Apollo`](https://www.apollographql.com/docs/apollo-server/) express server. 
 
 ## How to use
 
@@ -13,15 +13,14 @@ Clone the `crispy-api` branch of this repository:
 git clone git@github.com:WiseEngineering/crispy-api.git
 ```
 
-Install Node dependencies:
+Go to project folder:
 
 ```
 cd crispy-api
-yarn install
 ```
 
 
-### 2. Start up `Prisma` server and setup all models 
+### 2. Start up `Docker` servers 
 
 Command to start up server
 
@@ -29,14 +28,14 @@ Command to start up server
 docker-compose up -d
 ```
 
-Setup models to server:
+Run migration:
 
 ```
-yarn prisma-build
+docker exec -it <container name> yarn migration
 ```
 
-### 3. Start project 
+### 3. UI client URL
 
 ```
-yarn start
+http://localhost:4444/graphql/playground
 ```
