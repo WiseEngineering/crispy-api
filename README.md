@@ -32,7 +32,13 @@ docker-compose up -d
 Run migration:
 
 ```
-docker exec -it crispy-api yarn migration
+docker exec -it crispy-api yarn migrate
+```
+
+if you use docker-compose you can get container name use
+
+```
+docker ps
 ```
 
 ### 3. UI client URL

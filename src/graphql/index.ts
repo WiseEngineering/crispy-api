@@ -1,6 +1,6 @@
 import { knex } from '../db';
 
-const users = () => knex('user');
+const users = () => knex('users');
 
 const Query = {
     users,
