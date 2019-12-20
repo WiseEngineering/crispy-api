@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    env_file: .env
+    volumes:
+      - ./mysql:/var/lib/mysql
+  graphql:
+    build:
+      context: .
+      target: base
+    env_file: .env
+    links:
+      - mysql
+    ports:
+      - '4444:4444'
+    volumes:
+      - ./:/code
+      - /mysql
