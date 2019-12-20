@@ -1,6 +1,6 @@
 {
   "name": "crispy-api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:WiseEngineering/crispy-api.git",
   "author": "WiseEngineering open-source@wise-engineering.com",
