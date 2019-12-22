@@ -1,15 +1,9 @@
 import * as knex from "knex";
-require('dotenv').config();
+import { mySQLConfig } from "./src/config";
 
 const database = {
     client: "mysql",
-    connection:{
-        host: process.env.MYSQL_HOST,
-        port: process.env.MYSQL_PORT,
-        user: process.env.MYSQL_USER,
-        password: process.env.MYSQL_PASSWORD,
-        database: process.env.MYSQL_DATABASE,
-    },
+    connection: mySQLConfig,
     migrations: {
         directory: './migrations',
         tableName: 'knex_migrations'
