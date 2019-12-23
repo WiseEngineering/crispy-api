@@ -7,6 +7,8 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
   graphql:
+    container_name: crispy-api
+    image: crispy-api
     build:
       context: .
       target: base
