@@ -32,7 +32,7 @@ docker-compose up -d
 Run migration:
 
 ```
-docker exec -it crispy-api yarn migrate
+docker exec -it crispy-api_graphql_1 yarn migrate
 ```
 
 if you use docker-compose you can get container name use
