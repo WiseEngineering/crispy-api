@@ -4,6 +4,12 @@ services:
   mysql:
     image: mysql:5.7
     env_file: .env
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: crispy
+      MYSQL_DATABASE: crispy
     volumes:
       - ./mysql:/var/lib/mysql
   graphql:
