@@ -1,14 +1,41 @@
-require('dotenv').config();
+import fs from "fs";
 
-export const mySQLConfig = {
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
-    user: process.env.MYSQL_USER,
-    rootPassword: process.env.MYSQL_ROOT_PASSWORD,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+const usersDirectoryConfigPath = `${process.cwd()}/crispy.js`;
+
+type MysqlAPI = {
+  host: string;
+  port: number;
+  user: string;
+  password: string;
+  database: string;
 };
 
-export const serverConfig = {
-    port: process.env.SERVER_PORT || 4000,
+type ServerAPI = {
+  port: number;
 };
+
+export type Config = {
+  mysql?: MysqlAPI;
+  server?: ServerAPI;
+};
+
+let usersDirectoryConfig = {};
+
+if (fs.existsSync(usersDirectoryConfigPath)) {
+  usersDirectoryConfig = require(usersDirectoryConfigPath);
+}
+
+const defaultConfig = {
+  mysql: {
+    host: "mysql",
+    port: 3306,
+    user: "root",
+    password: "crispy",
+    database: "crispy"
+  },
+  server: {
+    port: 4444
+  }
+} as Config;
+
+export default { ...defaultConfig, ...usersDirectoryConfig };
