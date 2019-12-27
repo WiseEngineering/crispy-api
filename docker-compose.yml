@@ -3,7 +3,6 @@ version: '3.7'
 services:
   mysql:
     image: mysql:5.7
-    env_file: .env
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
@@ -18,7 +17,6 @@ services:
     build:
       context: .
       target: base
-    env_file: .env
     links:
       - mysql
     ports:
