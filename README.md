@@ -17,7 +17,6 @@ Go to project folder:
 
 ```
 cd crispy-api
-cp .env.example .env
 ```
 
 #### Configuration
