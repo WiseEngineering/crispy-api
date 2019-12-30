@@ -1,12 +1,35 @@
-type User {
+type Worker {
   id: ID!
   name: String!
+  endpoint: String!
+  apiKey: String!
+  created_at: String!
+  updated_at: String!
+}
+
+type Migration {
+  id: ID!
+  name: String!
+  created_at: String!
+  updated_at: String!
+}
+
+type Logging {
+  id: ID!
+  data: String!
+  migrationId: Int!
+  created_at: String!
+  updated_at: String!
 }
 
 type Query {
-  users: [User]
+  workers: [Worker]
+  migrations: [Migration]
+  logging: [Logging]
 }
 
 type Mutation {
-  addUser(name: String!): User!
+  createLog(data: String!, migrationId: Int!): Logging!
+  createMigration(name: String!): Migration!
+  createWorker(name: String!, endpoint: String!, apiKey: String!): Worker!
 }
