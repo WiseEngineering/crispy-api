@@ -11,7 +11,7 @@ const app = express();
 server.applyMiddleware({ app });
 app.use('/', express.static('public'));
 
-const port = config.server!.port;
+const port = config.server!.port || 4444;
 
 app.listen(port, () =>
   console.log(`App listening on port ${port}!`)
