@@ -28,8 +28,12 @@ type Query {
   logging: [Logging]
 }
 
+type Entity {
+  id: ID!
+}
+
 type Mutation {
-  createLog(data: String!, migrationId: Int!): Logging!
-  createMigration(name: String!): Migration!
-  createWorker(name: String!, endpoint: String!, apiKey: String!): Worker!
+  createLog(data: String!, migrationId: Int!): Entity!
+  createMigration(name: String!): Entity!
+  createWorker(name: String!, endpoint: String!, apiKey: String!): Entity!
 }
