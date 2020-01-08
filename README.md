@@ -17,11 +17,34 @@ Go to project folder:
 
 ```
 cd crispy-api
-cp .env.example .env
 ```
 
+#### Configuration
 
-### 2. Start up `Docker` servers 
+To specify your own configuration you could use `crispy.js` config file.
+
+| Field | Type | Description |
+| :---  |  :---  |  :--- |
+| mysql | MysqlAPI | Mysql API configuration |
+| server | ServerAPI | Server API configuration |
+
+Mysql API configuration
+
+| Field | Type |
+| :--- |  :--- |
+| host | string |
+| port | number |
+| user | string |
+| password | string |
+| database | string |
+
+Server API configuration
+
+| Field | Type |
+| :---  |  :---  |
+| port | number |
+
+### 2. Start up `Docker` servers
 
 Command to start up server
 
