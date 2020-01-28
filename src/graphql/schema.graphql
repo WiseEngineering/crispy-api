@@ -47,4 +47,8 @@ type Mutation {
   createMigration(name: String!): Entity!
   createWorker(name: String!, endpoint: String!, apiKey: String!): Entity!
   createJob(migrationId: Int!, workerId: Int!, status: String! = "pending"): Entity!
+  deleteJob(id: ID!): Entity!
+  deleteWorker(id: ID!): Entity!
+  deleteMigration(id: ID!): Entity!
+  deleteLog(id: ID!): Entity!
 }

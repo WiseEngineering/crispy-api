@@ -1,6 +1,7 @@
 import { knex } from '../db';
 
 type Worker = {
+    id: number
     name: string
     endpoint: string
     apiKey: string
@@ -8,10 +9,16 @@ type Worker = {
     updatedAt?: Date
 }
 
-const workers = () => knex('workers');
-const createWorker = (parent : any, args : Worker) =>
-    knex('workers')
-        .insert(args)
-        .then(data => Promise.resolve({id : data[0]}));
+const tableName = 'workers';
 
-export { workers, createWorker }
+const workers = () => knex(tableName);
+const createWorker = (parent : any, args : Worker) => knex(tableName)
+        .insert(args)
+        .then(data => ({id : data[0]}));
+const deleteWorker = (parent : any, args : Worker) => knex(tableName)
+    .where(args)
+    .del()
+    .then(() => args);
+
+
+export { workers, createWorker, deleteWorker }
