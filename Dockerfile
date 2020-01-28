@@ -4,7 +4,7 @@ WORKDIR /code
 
 COPY package.json /code/package.json
 COPY yarn.lock /code/yarn.lock
-COPY .env /code/.env
+
 RUN yarn
 
 EXPOSE 4444
