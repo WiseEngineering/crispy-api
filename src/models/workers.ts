@@ -4,6 +4,8 @@ type Worker = {
     name: string
     endpoint: string
     apiKey: string
+    createdAt?: Date
+    updatedAt?: Date
 }
 
 const workers = () => knex('workers');

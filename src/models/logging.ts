@@ -3,6 +3,8 @@ import { knex } from '../db';
 type Logging = {
     name : string
     migrationId: number
+    createdAt?: Date
+    updatedAt?: Date
 }
 
 const logging = () => knex('logging');

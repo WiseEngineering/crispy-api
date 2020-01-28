@@ -5,10 +5,10 @@ export async function up(knex: Knex): Promise<any> {
     await knex.schema.createTable('logging', table => {
         table.increments('id').primary();
         table.string('data').notNullable();
-        table.integer('migration_id').unsigned();
+        table.integer('job_id').unsigned();
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.fn.now());
-        table.foreign('migration_id').references('id').inTable('migrations');
+        table.foreign('job_id').references('id').inTable('jobs');
     });
 }
 

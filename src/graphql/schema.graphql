@@ -3,29 +3,39 @@ type Worker {
   name: String!
   endpoint: String!
   apiKey: String!
-  created_at: String!
-  updated_at: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Migration {
   id: ID!
   name: String!
-  created_at: String!
-  updated_at: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Logging {
   id: ID!
   data: String!
+  jobId: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Job {
+  id: ID!
   migrationId: Int!
-  created_at: String!
-  updated_at: String!
+  workerId: Int!
+  status: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
   workers: [Worker]
   migrations: [Migration]
   logging: [Logging]
+  jobs: [Job]
 }
 
 type Entity {
@@ -33,7 +43,8 @@ type Entity {
 }
 
 type Mutation {
-  createLog(data: String!, migrationId: Int!): Entity!
+  createLog(data: String!, jobId: Int!): Entity!
   createMigration(name: String!): Entity!
   createWorker(name: String!, endpoint: String!, apiKey: String!): Entity!
+  createJob(migrationId: Int!, workerId: Int!, status: String! = "pending"): Entity!
 }
