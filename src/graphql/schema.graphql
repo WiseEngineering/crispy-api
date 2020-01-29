@@ -1,12 +1,54 @@
-type User {
+type Worker {
   id: ID!
   name: String!
+  endpoint: String!
+  apiKey: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Migration {
+  id: ID!
+  name: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Logging {
+  id: ID!
+  data: String!
+  jobId: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Job {
+  id: ID!
+  migrationId: Int!
+  workerId: Int!
+  status: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
-  users: [User]
+  workers: [Worker]
+  migrations: [Migration]
+  logging: [Logging]
+  jobs: [Job]
+}
+
+type Entity {
+  id: ID!
 }
 
 type Mutation {
-  addUser(name: String!): User!
+  createLog(data: String!, jobId: Int!): Entity!
+  createMigration(name: String!): Entity!
+  createWorker(name: String!, endpoint: String!, apiKey: String!): Entity!
+  createJob(migrationId: Int!, workerId: Int!, status: String! = "pending"): Entity!
+  deleteJob(id: ID!): Entity!
+  deleteWorker(id: ID!): Entity!
+  deleteMigration(id: ID!): Entity!
+  deleteLog(id: ID!): Entity!
 }
