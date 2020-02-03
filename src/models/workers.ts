@@ -1,4 +1,4 @@
-import { knex } from '../db';
+import {create, remove, select, update} from "./index";
 
 type Worker = {
     id: number
@@ -11,14 +11,9 @@ type Worker = {
 
 const tableName = 'workers';
 
-const workers = () => knex(tableName);
-const createWorker = (parent : any, args : Worker) => knex(tableName)
-        .insert(args)
-        .then(data => ({id : data[0]}));
-const deleteWorker = (parent : any, args : Worker) => knex(tableName)
-    .where(args)
-    .del()
-    .then(() => args);
+const workers = () => select(tableName);
+const createWorker = (parent : any, args : Worker) => create(parent, args, tableName);
+const deleteWorker = (parent : any, args : Worker) => remove(parent, args, tableName);
+const updateWorker = (parent : any, args : Worker) => update(parent, args, tableName);
 
-
-export { workers, createWorker, deleteWorker }
+export { workers, createWorker, deleteWorker, updateWorker }

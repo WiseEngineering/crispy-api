@@ -1,4 +1,4 @@
-import { knex } from '../db';
+import {create, remove, select, update} from "./index";
 
 type Migration = {
     id: number
@@ -9,13 +9,9 @@ type Migration = {
 
 const tableName = 'migrations';
 
-const migrations = () => knex(tableName);
-const createMigration = (parent : any, args : Migration) => knex(tableName)
-        .insert(args)
-        .then(data => ({id : data[0]}));
-const deleteMigration = (parent : any, args : Migration) => knex(tableName)
-    .where(args)
-    .del()
-    .then(() => args);
+const migrations = () => select(tableName);
+const createMigration = (parent : any, args : Migration) => create(parent, args, tableName);
+const deleteMigration = (parent : any, args : Migration) => remove(parent, args, tableName);
+const updateMigration = (parent : any, args : Migration) => update(parent, args, tableName);
 
-export { migrations, createMigration, deleteMigration }
+export { migrations, createMigration, deleteMigration, updateMigration }

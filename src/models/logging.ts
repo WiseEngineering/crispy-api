@@ -1,4 +1,4 @@
-import { knex } from '../db';
+import {select, create, remove, update} from './index';
 
 type Logging = {
     id: number
@@ -10,12 +10,9 @@ type Logging = {
 
 const tableName = 'logging';
 
-const logging = () => knex(tableName);
-const createLog = (parent : any, args : Logging) => knex(tableName)
-        .insert(args)
-        .then(data => ({id : data[0]}));
-const deleteLog = (parent : any, args : Logging) => knex(tableName)
-        .insert(args)
-        .then(data => ({id : data[0]}));
+const logging = () => select(tableName);
+const createLog = (parent : any, args : Logging) => create(parent, args, tableName);
+const deleteLog = (parent : any, args : Logging) => remove(parent, args, tableName);
+const updateLog = (parent : any, args : Logging) => update(parent, args, tableName);
 
-export { logging, createLog, deleteLog }
+export { logging, createLog, deleteLog, updateLog }

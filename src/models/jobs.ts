@@ -1,4 +1,4 @@
-import { knex } from '../db';
+import {select, create, remove, update} from './index';
 
 type Job = {
     id: number
@@ -9,15 +9,11 @@ type Job = {
     updatedAt?: Date
 }
 
-const tableName = 'logging';
+const tableName = 'jobs';
 
-const jobs = () => knex(tableName);
-const createJob = (parent : any, args : Job) => knex(tableName)
-    .insert(args)
-    .then(data => Promise.resolve({id: data[0]}));
-const deleteJob = (parent : any, args : Job) => knex(tableName)
-    .where(args)
-    .del()
-    .then(() => args);
+const jobs = () => select(tableName);
+const createJob = (parent : any, args : Job) => create(parent, args, tableName);
+const deleteJob = (parent : any, args : Job) => remove(parent, args, tableName);
+const updateJob = (parent : any, args : Job) => update(parent, args, tableName);
 
-export { jobs, createJob, deleteJob }
+export { jobs, createJob, deleteJob, updateJob }

@@ -46,9 +46,13 @@ type Mutation {
   createLog(data: String!, jobId: Int!): Entity!
   createMigration(name: String!): Entity!
   createWorker(name: String!, endpoint: String!, apiKey: String!): Entity!
-  createJob(migrationId: Int!, workerId: Int!, status: String! = "pending"): Entity!
+  createJob(migrationId: Int!, workerId: Int!, status: String = "pending"): Entity!
   deleteJob(id: ID!): Entity!
   deleteWorker(id: ID!): Entity!
   deleteMigration(id: ID!): Entity!
   deleteLog(id: ID!): Entity!
+  updateJob(id: ID!, migrationId: Int, workerId: Int, status: String): Entity!
+  updateWorker(id: ID!, name: String, endpoint: String, apiKey: String): Entity!
+  updateMigration(id: ID!, name: String): Entity!
+  updateLog(id: ID!, data: String, jobId: Int): Entity!
 }
