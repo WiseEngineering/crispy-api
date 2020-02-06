@@ -14,11 +14,11 @@ const tableName = 'jobs';
 const jobs = () => knex(tableName);
 const createJob = (parent : any, args : Job) => knex(tableName)
     .insert(args)
-    .then(data => Promise.resolve({id: data[0]}));;
+    .then(data => Promise.resolve({id: data[0]}));
 const deleteJob = (parent : any, args : Job) => knex(tableName)
     .where(args)
     .del()
-    .then(() => args);;
+    .then(() => args);
 const updateJob = (parent : any, {id, ...data} : Job) => knex(tableName)
     .where({id})
     .first()

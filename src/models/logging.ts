@@ -17,7 +17,7 @@ const createLog = (parent : any, args : Logging) => knex(tableName)
 const deleteLog = (parent : any, args : Logging) => knex(tableName)
     .where(args)
     .del()
-    .then(() => args);;
+    .then(() => args);
 const updateLog = (parent : any, {id, ...data} : Logging) => knex(tableName)
     .where({id})
     .first()
