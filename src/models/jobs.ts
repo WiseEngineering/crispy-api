@@ -9,7 +9,7 @@ type Job = {
     updatedAt?: Date
 }
 
-const tableName = 'logging';
+const tableName = 'jobs';
 
 const jobs = () => knex(tableName);
 const createJob = (parent : any, args : Job) => knex(tableName)
@@ -19,5 +19,13 @@ const deleteJob = (parent : any, args : Job) => knex(tableName)
     .where(args)
     .del()
     .then(() => args);
+const updateJob = (parent : any, {id, ...data} : Job) => knex(tableName)
+    .where({id})
+    .first()
+    .then(row => ({...row, ...data, updated_at : new Date()}))
+    .then(data => knex(tableName)
+        .update(data)
+        .then(() => ({id}))
+    );
 
-export { jobs, createJob, deleteJob }
+export { jobs, createJob, deleteJob, updateJob }

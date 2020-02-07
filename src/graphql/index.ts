@@ -1,7 +1,7 @@
-import { workers, createWorker, deleteWorker } from "../models/workers";
-import { migrations, createMigration, deleteMigration } from "../models/migrations";
-import { logging, createLog, deleteLog } from "../models/logging";
-import { jobs, createJob, deleteJob } from "../models/jobs";
+import { workers, createWorker, deleteWorker, updateWorker } from "../models/workers";
+import { migrations, createMigration, deleteMigration, updateMigration } from "../models/migrations";
+import { logging, createLog, deleteLog, updateLog } from "../models/logging";
+import { jobs, createJob, deleteJob, updateJob } from "../models/jobs";
 
 const Query = {
     workers,
@@ -19,6 +19,10 @@ const Mutation = {
     deleteWorker,
     deleteMigration,
     deleteLog,
+    updateJob,
+    updateWorker,
+    updateMigration,
+    updateLog
 };
 
 const resolvers = { Query, Mutation };
